@@ -19,12 +19,13 @@ Or install it yourself as:
     $ gem install ae_network_connection_exception
 
 ## Usage
-
+```
 AeNetworkConnectionException.try do
   # your code that will make a network call
 end
+```
 
- # If your network call failed to establise a network connection, an exception of type ```AeNetworkConnectionException::ConnectionNotEstablished``` will be thrown
+If your network call failed to establise a network connection, an exception of type ```AeNetworkConnectionException::ConnectionNotEstablished``` will be thrown
 
 ## Contributing
 
