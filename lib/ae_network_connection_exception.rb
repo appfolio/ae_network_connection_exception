@@ -29,7 +29,7 @@ module AeNetworkConnectionException
     # socket error happens when we fail to connect to a socket. Common problems here are DNS resolution (i.e. getaddrinfo)
     
     raise ConnectionNotEstablished
-  rescue SystemCallError => e
+  rescue Errno::ETIMEDOUT, Errno::ECONNREFUSED => e
     # Errno::ECONNREFUSED happens when we can not connect to the port
     # Errno::ETIMEDOUT happens when we timeout durring the tcp handshake
     # It is important to note, Errno::ETIMEDOUT can also happen after we have established a connection and are waiting for a response.
@@ -37,7 +37,7 @@ module AeNetworkConnectionException
     # Errno::* Exceptions have the following error message format
     # "#{Message string} - #{syscall} for "#{host}" port #{port}"
     
-    if ([Errno::ETIMEDOUT, Errno::ECONNREFUSED].include? e.class) && (e.message =~ /connect\(2\)/)
+    if e.message =~ /connect\(2\)/
       raise ConnectionNotEstablished
     else
       raise e

@@ -1,7 +1,7 @@
 require 'test_helper'
 
 module AeNetworkConnectionException
-  class AeNetworkConnectionExceptionTest < Test::Unit::TestCase
+  class AeNetworkConnectionExceptionTest < Minitest::Test
     def test_connection_not_established_exception
       parent_exception = AeNetworkConnectionException::ConnectionNotEstablished.new("Parent Message")
 
@@ -23,7 +23,7 @@ module AeNetworkConnectionException
         parent_exception = AeNetworkConnectionException::ConnectionNotEstablished.new("New Parent Message")
       end
 
-      assert_not_nil child_exception
+      refute_nil child_exception
       assert_equal child_exception, parent_exception.cause
       assert_equal "New Parent Message, cause => StandardError: New Child Message", parent_exception.message
     end
