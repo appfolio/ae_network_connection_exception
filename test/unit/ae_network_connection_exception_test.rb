@@ -3,29 +3,28 @@ require 'test_helper'
 module AeNetworkConnectionException
   class AeNetworkConnectionExceptionTest < Minitest::Test
     def test_connection_not_established_exception
+      # Exception Causes are standard with ruby 2.1
+      # http://devblog.avdi.org/2013/12/25/exception-causes-in-ruby-2-1
+      
       parent_exception = AeNetworkConnectionException::ConnectionNotEstablished.new("Parent Message")
 
       assert_equal nil, parent_exception.cause
       assert_equal "Parent Message", parent_exception.message
 
-      child_exception = StandardError.new("Child Message")
-      parent_exception = AeNetworkConnectionException::ConnectionNotEstablished.new("Parent Message", child_exception)
-
-      assert_equal child_exception, parent_exception.cause
-      assert_equal "Parent Message, cause => StandardError: Child Message", parent_exception.message
-
-      child_exception = nil
-      parent_exception = nil
       begin
-        raise StandardError.new("New Child Message")
-      rescue => e
-        child_exception = e
-        parent_exception = AeNetworkConnectionException::ConnectionNotEstablished.new("New Parent Message")
-      end
+        child_exception = nil
+        begin
+          raise StandardError.new("New Child Message")
+        rescue => e
+          child_exception = e
+          parent_exception = AeNetworkConnectionException::ConnectionNotEstablished.new("New Parent Message")
+        end
+      rescue AeNetworkConnectionException::ConnectionNotEstablished => parent_exception
 
-      refute_nil child_exception
-      assert_equal child_exception, parent_exception.cause
-      assert_equal "New Parent Message, cause => StandardError: New Child Message", parent_exception.message
+        refute_nil child_exception
+        assert_equal child_exception, parent_exception.cause
+        assert_equal "New Parent Message, cause => StandardError: New Child Message", parent_exception.message
+      end
     end
 
     def test_ae_network_connection_exception_try__doesnt_catch_non_network_exceptions
