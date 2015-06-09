@@ -39,49 +39,36 @@ module AeNetworkConnectionException
     end
     
     def test_ae_network_connection_exception_try__raises_connection_not_establised_exception
-      e = return_raised_error do
-        AeNetworkConnectionException.try do
-          raise SocketError.new("getaddrinfo: Name or service not known")
-        end
-      end
-      assert_equal AeNetworkConnectionException::ConnectionNotEstablished, e.class
-      assert_equal SocketError, e.cause.class
+      assert_connection_not_established_thrown_for(SocketError.new("getaddrinfo: Name or service not known"))
+      assert_connection_not_established_thrown_for(Errno::ECONNREFUSED.new('Connection refused - connect(2) for "example.com" port 443'))
+      assert_connection_not_established_thrown_for(Errno::ETIMEDOUT.new('Connection timed out - connect(2) for "example.com" port 443'))
+      assert_connection_not_established_thrown_for(Net::OpenTimeout.new('message'))
+      assert_connection_not_established_thrown_for(Errno::ECONNRESET.new('Connection reset by peer - SSL_connect'))
       
-      e = return_raised_error do
-        AeNetworkConnectionException.try do
-          raise Errno::ECONNREFUSED.new('Connection refused - connect(2) for "example.com" port 443')
-        end
-      end
-      assert_equal AeNetworkConnectionException::ConnectionNotEstablished, e.class
-      assert_equal Errno::ECONNREFUSED, e.cause.class
-      
-      e = return_raised_error do
-        AeNetworkConnectionException.try do
-          raise Errno::ETIMEDOUT.new('Connection timed out - connect(2) for "example.com" port 443')
-        end
-      end
-      assert_equal AeNetworkConnectionException::ConnectionNotEstablished, e.class
-      assert_equal Errno::ETIMEDOUT, e.cause.class
-      
-      
-
-      e = return_raised_error do
-        AeNetworkConnectionException.try do
-          raise Errno::ECONNRESET.new('Connection timed out - connect(2) for "example.com" port 443')
-        end
-      end
-      assert_equal Errno::ECONNRESET, e.class
-      
-      e = return_raised_error do
-        AeNetworkConnectionException.try do
-          raise Errno::ETIMEDOUT.new('Connection timed out - recvfrom(2) for "example.com" port 443')
-        end
-      end
-      assert_equal Errno::ETIMEDOUT, e.class
-      
+      assert_connection_not_established_not_thrown_for(Errno::ECONNRESET.new('Connection timed out - connect(2) for "example.com" port 443'))
+      assert_connection_not_established_not_thrown_for(Errno::ETIMEDOUT.new('Connection timed out - recvfrom(2) for "example.com" port 443'))
     end
 
     private
+    
+    def assert_connection_not_established_thrown_for(exception)
+      e = return_raised_error do
+        AeNetworkConnectionException.try do
+          raise exception
+        end
+      end
+      assert_equal AeNetworkConnectionException::ConnectionNotEstablished, e.class
+      assert_equal exception, e.cause
+    end
+    
+    def assert_connection_not_established_not_thrown_for(exception)
+      e = return_raised_error do
+        AeNetworkConnectionException.try do
+          raise exception
+        end
+      end
+      assert_equal exception, e
+    end
 
     def return_raised_error
       yield
