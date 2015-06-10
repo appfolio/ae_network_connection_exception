@@ -38,14 +38,28 @@ module AeNetworkConnectionException
     end
     
     def test_ae_network_connection_exception_try__raises_connection_not_establised_exception
-      assert_connection_not_established_thrown_for(SocketError.new("getaddrinfo: Name or service not known"))
-      assert_connection_not_established_thrown_for(Errno::ECONNREFUSED.new('Connection refused - connect(2) for "example.com" port 443'))
-      assert_connection_not_established_thrown_for(Errno::ETIMEDOUT.new('Connection timed out - connect(2) for "example.com" port 443'))
-      assert_connection_not_established_thrown_for(Net::OpenTimeout.new('message'))
-      assert_connection_not_established_thrown_for(Errno::ECONNRESET.new('Connection reset by peer - SSL_connect'))
+      AeNetworkConnectionException.exception_signatures.each do |e|
+        assert_connection_not_established_thrown_for(e)
+      end
       
       assert_connection_not_established_not_thrown_for(Errno::ECONNRESET.new('Connection timed out - connect(2) for "example.com" port 443'))
       assert_connection_not_established_not_thrown_for(Errno::ETIMEDOUT.new('Connection timed out - recvfrom(2) for "example.com" port 443'))
+    end
+    
+    def test_exception_signatures
+      expected_signatures = [
+        SocketError.new('getaddrinfo: Name or service not known'),
+        Errno::ECONNREFUSED.new('Connection refused - connect(2) for "example.com" port 443'),
+        Errno::ETIMEDOUT.new('Connection timed out - connect(2) for "example.com" port 443'),
+        Net::OpenTimeout.new('message'),
+        Errno::ECONNRESET.new('Connection reset by peer - SSL_connect')
+      ]
+      
+      assert_equal expected_signatures.size, AeNetworkConnectionException.exception_signatures.size
+      
+      expected_signatures.each do |e|
+        assert_includes AeNetworkConnectionException.exception_signatures, e 
+      end
     end
 
     private

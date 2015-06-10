@@ -29,6 +29,17 @@ module AeNetworkConnectionException
       raise_if_exception_message_matches(e, /SSL_connect/)
     end
     
+    # An array of examples for all the exceptions that we will catch
+    def exception_signatures
+      [
+          SocketError.new('getaddrinfo: Name or service not known'),
+          Errno::ECONNREFUSED.new('Connection refused - connect(2) for "example.com" port 443'),
+          Errno::ETIMEDOUT.new('Connection timed out - connect(2) for "example.com" port 443'),
+          Net::OpenTimeout.new('message'),
+          Errno::ECONNRESET.new('Connection reset by peer - SSL_connect')
+      ]
+    end
+    
     private
     
     def raise_if_exception_message_matches(exception, pattern)
