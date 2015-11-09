@@ -6,24 +6,24 @@ module AeNetworkConnectionException
       # Exception Causes are standard with ruby 2.1
       # http://devblog.avdi.org/2013/12/25/exception-causes-in-ruby-2-1
       
-      parent_exception = AeNetworkConnectionException::ConnectionNotEstablished.new("Parent Message")
+      parent_exception = AeNetworkConnectionException::ConnectionNotEstablished.new('Parent Message')
 
       assert_equal nil, parent_exception.cause
-      assert_equal "Parent Message", parent_exception.message
+      assert_equal 'Parent Message', parent_exception.message
 
       begin
         child_exception = nil
         begin
-          raise StandardError.new("New Child Message")
+          raise StandardError.new('New Child Message')
         rescue => e
           child_exception = e
-          parent_exception = AeNetworkConnectionException::ConnectionNotEstablished.new("New Parent Message")
+          parent_exception = AeNetworkConnectionException::ConnectionNotEstablished.new('New Parent Message')
         end
       rescue AeNetworkConnectionException::ConnectionNotEstablished => parent_exception
 
         refute_nil child_exception
         assert_equal child_exception, parent_exception.cause
-        assert_equal "New Parent Message, cause => StandardError: New Child Message", parent_exception.message
+        assert_equal 'New Parent Message, cause => StandardError: New Child Message', parent_exception.message
       end
     end
 
@@ -52,7 +52,9 @@ module AeNetworkConnectionException
         Errno::ECONNREFUSED.new('Connection refused - connect(2) for "example.com" port 443'),
         Errno::ETIMEDOUT.new('Connection timed out - connect(2) for "example.com" port 443'),
         Net::OpenTimeout.new('message'),
-        Errno::ECONNRESET.new('Connection reset by peer - SSL_connect')
+        Errno::ECONNRESET.new('Connection reset by peer - SSL_connect', Errno::ECONNREFUSED.new('Connection refused - connect(2) for "example.com" port 443')),
+        Errno::EHOSTUNREACH.new('No route to host - connect(2) for "example.com" port 443'),
+        Errno::ENETUNREACH.new('Network is unreachable - connect(2) for "example.com" port 443')
       ]
       
       assert_equal expected_signatures.size, AeNetworkConnectionException.exception_signatures.size
