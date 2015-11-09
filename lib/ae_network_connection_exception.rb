@@ -14,7 +14,7 @@ module AeNetworkConnectionException
       # Net::OpenTimeout happens when we are unable to establish an HTTP connection before the open_timeout
 
       raise ConnectionNotEstablished
-    rescue Errno::ETIMEDOUT, Errno::ECONNREFUSED => e
+    rescue Errno::ETIMEDOUT, Errno::ECONNREFUSED, Errno::EHOSTUNREACH, Errno::ENETUNREACH => e
       # Errno::ECONNREFUSED happens when we can not connect to the port
       # Errno::ETIMEDOUT happens when we timeout durring the tcp handshake
       # It is important to note, Errno::ETIMEDOUT can also happen after we have established a connection and are waiting for a response.
@@ -36,7 +36,9 @@ module AeNetworkConnectionException
           Errno::ECONNREFUSED.new('Connection refused - connect(2) for "example.com" port 443'),
           Errno::ETIMEDOUT.new('Connection timed out - connect(2) for "example.com" port 443'),
           Net::OpenTimeout.new('message'),
-          Errno::ECONNRESET.new('Connection reset by peer - SSL_connect')
+          Errno::ECONNRESET.new('Connection reset by peer - SSL_connect', Errno::ECONNREFUSED.new('Connection refused - connect(2) for "example.com" port 443')),
+          Errno::EHOSTUNREACH.new('No route to host - connect(2) for "example.com" port 443'),
+          Errno::ENETUNREACH.new('Network is unreachable - connect(2) for "example.com" port 443')
       ]
     end
     
