@@ -5,3 +5,6 @@ gemspec
 
 gem 'minitest', '~> 5.0'
 
+source 'https://gemini.atl.appfolio.net' do
+  gem 'af_gems'
+end
