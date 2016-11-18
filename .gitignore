@@ -13,3 +13,4 @@
 *.a
 .idea
 mkmf.log
+gemfiles/*lock
