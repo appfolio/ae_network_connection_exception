@@ -1,4 +1,5 @@
 require "ae_network_connection_exception/version"
+require "net/http"
 require "socket"
 
 module AeNetworkConnectionException
