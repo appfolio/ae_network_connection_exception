@@ -1,0 +1,37 @@
+defaults: &defaults
+  working_directory: ~/repo
+
+  steps:
+    - checkout
+    - run: sudo apt-get update
+    - run: sudo apt-get install -y mysql-client
+    - run: bundle install
+    - run: bundle exec appraisal install
+    - run:
+        name: Wait for DB
+        command: dockerize -wait tcp://127.0.0.1:3306 -timeout 2m
+    - run: bundle exec appraisal rake test
+
+version: 2
+jobs:
+  test-ruby-2.3.3:
+    <<: *defaults
+    docker:
+      - image: circleci/ruby:2.3.3
+      - image: circleci/mysql:5.6
+
+  test-ruby-2.5.3:
+    <<: *defaults
+    docker:
+      - image: circleci/ruby:2.5.3-stretch
+      - image: circleci/mysql:5.6
+
+workflows:
+  version: 2
+  rc:
+    jobs:
+      - test-ruby-2.3.3:
+          context: appfolio_test_context
+      - test-ruby-2.5.3:
+          context: appfolio_test_context
+
