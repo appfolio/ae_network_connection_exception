@@ -20,5 +20,5 @@ end
 task :default => :test
 
 namespace :test do
-  AfGems::RubyAppraisalTask.new(:all, [ 'ruby-2.2.3', 'ruby-2.3.3' ])
+  AfGems::RubyAppraisalTask.new(:all, [ 'ruby-2.3.3', 'ruby-2.5.3' ])
 end
