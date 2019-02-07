@@ -8,4 +8,4 @@ source "https://gemini.atl.appfolio.net" do
   gem "af_gems"
 end
 
-gemspec :path => "../"
+gemspec path: "../"
