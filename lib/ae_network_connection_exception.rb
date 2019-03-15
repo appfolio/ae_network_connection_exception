@@ -8,7 +8,6 @@ module AeNetworkConnectionException
 
   OTHER_EXCEPTIONS = []
   if defined?(RestClient::Exceptions::OpenTimeout)
-    puts "here"
     OTHER_EXCEPTIONS << RestClient::Exceptions::OpenTimeout
   end
   OTHER_EXCEPTIONS.freeze
