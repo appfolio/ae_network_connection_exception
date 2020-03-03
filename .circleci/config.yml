@@ -1,30 +1,38 @@
-defaults: &defaults
-  working_directory: ~/repo
+version: 2.1
+commands:
+  bundle_install_and_test:
+    steps:
+      - checkout
+      - run: bundle install
+      - run: bundle exec rubocop
+      - run: bundle exec appraisal install
+      - run: bundle exec appraisal rake test
 
-  steps:
-    - checkout
-    - run: bundle install
-    - run: bundle exec appraisal install
-    - run: bundle exec appraisal rake test
-
-version: 2
 jobs:
-  test-ruby-2.3.3:
-    <<: *defaults
+  test-ruby-233:
+    steps:
+      - bundle_install_and_test
     docker:
       - image: circleci/ruby:2.3.3
 
-  test-ruby-2.5.3:
-    <<: *defaults
+  test-ruby-253:
+    steps:
+      - bundle_install_and_test
     docker:
-      - image: circleci/ruby:2.5.3-stretch
+      - image: circleci/ruby:2.5.3
+
+  test-ruby-263:
+    steps:
+      - bundle_install_and_test
+    docker:
+      - image: circleci/ruby:2.6.3
 
 workflows:
-  version: 2
   rc:
     jobs:
-      - test-ruby-2.3.3:
+      - test-ruby-233:
           context: appfolio_test_context
-      - test-ruby-2.5.3:
+      - test-ruby-253:
           context: appfolio_test_context
-
+      - test-ruby-263:
+          context: appfolio_test_context
