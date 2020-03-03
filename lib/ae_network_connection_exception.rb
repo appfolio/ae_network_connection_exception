@@ -1,15 +1,13 @@
-require "ae_network_connection_exception/version"
-require "net/http"
-require "socket"
+require 'ae_network_connection_exception/version'
+require 'net/http'
+require 'socket'
 
 module AeNetworkConnectionException
   class ConnectionNotEstablished < StandardError
   end
 
-  OTHER_EXCEPTIONS = []
-  if defined?(RestClient::Exceptions::OpenTimeout)
-    OTHER_EXCEPTIONS << RestClient::Exceptions::OpenTimeout
-  end
+  OTHER_EXCEPTIONS = [].freeze
+  OTHER_EXCEPTIONS << RestClient::Exceptions::OpenTimeout if defined?(RestClient::Exceptions::OpenTimeout)
   OTHER_EXCEPTIONS.freeze
 
   class << self

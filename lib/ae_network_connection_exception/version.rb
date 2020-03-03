@@ -1,3 +1,3 @@
 module AeNetworkConnectionException
-  VERSION = "1.5.0"
+  VERSION = '1.5.0'.freeze
 end

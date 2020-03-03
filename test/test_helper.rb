@@ -26,7 +26,7 @@ class Minitest::Test
 
   def return_raised_error
     yield
-  rescue => e
-    return e
+  rescue StandardError => e
+    e
   end
 end

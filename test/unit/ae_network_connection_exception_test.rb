@@ -15,16 +15,15 @@ module AeNetworkConnectionException
       begin
         child_exception = nil
         begin
-          raise StandardError.new('New Child Message')
-        rescue => e
+          raise StandardError, 'New Child Message'
+        rescue StandardError => e
           child_exception = e
           parent_exception = AeNetworkConnectionException::ConnectionNotEstablished.new('New Parent Message')
         end
-      rescue AeNetworkConnectionException::ConnectionNotEstablished => parent_exception
-
+      rescue AeNetworkConnectionException::ConnectionNotEstablished => e
         refute_nil child_exception
-        assert_equal child_exception, parent_exception.cause
-        assert_equal 'New Parent Message, cause => StandardError: New Child Message', parent_exception.message
+        assert_equal child_exception, e.cause
+        assert_equal 'New Parent Message, cause => StandardError: New Child Message', e.message
       end
     end
 
@@ -70,4 +69,3 @@ module AeNetworkConnectionException
     end
   end
 end
-
