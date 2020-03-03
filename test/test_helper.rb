@@ -1,32 +1,26 @@
-require 'rubygems'
-require 'minitest/autorun'
-require 'ae_network_connection_exception'
+# frozen_string_literal: true
 
-private
+require 'bundler'
 
-class Minitest::Test
-  def assert_connection_not_established_thrown_for(exception)
-    e = return_raised_error do
-      AeNetworkConnectionException.try do
-        raise exception
-      end
-    end
-    assert_equal AeNetworkConnectionException::ConnectionNotEstablished, e.class
-    assert_equal exception, e.cause
-  end
+begin
+  Bundler.setup(:default, :development)
+rescue Bundler::BundlerError => e
+  warn e.message
+  warn 'Run `bundle install` to install missing gems'
+  exit e.status_code
+end
 
-  def assert_connection_not_established_not_thrown_for(exception)
-    e = return_raised_error do
-      AeNetworkConnectionException.try do
-        raise exception
-      end
-    end
-    assert_equal exception, e
-  end
-
-  def return_raised_error
-    yield
-  rescue StandardError => e
-    e
+if ENV['WITH_COVERAGE'] == 'true'
+  require 'simplecov'
+  SimpleCov.start do
+    enable_coverage :branch
+    add_filter %r{\A/test}
   end
 end
+
+require 'ae_network_connection_exception'
+require 'minitest/autorun'
+require 'minitest/reporters'
+require 'rest-client'
+
+MiniTest::Reporters.use!
