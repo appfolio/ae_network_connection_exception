@@ -5,13 +5,13 @@ require_relative 'lib/ae_network_connection_exception/version'
 Gem::Specification.new do |spec|
   spec.name          = 'ae_network_connection_exception'
   spec.version       = AeNetworkConnectionException::VERSION
-  spec.author        = 'Appfolio'
-  spec.email         = 'dev@appfolio.com'
+  spec.author        = 'Appfolio, Inc.'
+  spec.email         = 'opensource@appfolio.com'
   spec.summary       = 'Provides sane exceptions for network failures'
   spec.description   = 'Catch exceptions related to establishing a network connection and return a generic error.'
-  spec.homepage      = 'http://github.com/appfolio/ae_network_connection_exception'
+  spec.homepage      = 'https://github.com/appfolio/ae_network_connection_exception'
   spec.license       = 'MIT'
-  spec.files         = Dir['**/*'].select { |f| f[%r{^(lib/|Gemfile$|Rakefile|README.md|LICENSE.txt|.*gemspec)}] }
+  spec.files         = Dir['**/*'].select { |f| f[%r{^(lib/|test/|Rakefile$|README.md$|LICENSE.txt$|\w+\.*gemspec)}] }
   spec.require_paths = ['lib']
 
   spec.add_development_dependency('appraisal', '~> 2.2')

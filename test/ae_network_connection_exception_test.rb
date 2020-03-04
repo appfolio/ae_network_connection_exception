@@ -9,9 +9,6 @@ module AeNetworkConnectionException
     end
 
     def test_connection_not_established_exception
-      # Exception Causes are standard with ruby 2.1
-      # http://devblog.avdi.org/2013/12/25/exception-causes-in-ruby-2-1
-
       parent_exception = AeNetworkConnectionException::ConnectionNotEstablished.new('Parent Message')
 
       assert_nil parent_exception.cause
