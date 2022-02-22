@@ -23,4 +23,4 @@ require 'minitest/autorun'
 require 'minitest/reporters'
 require 'rest-client'
 
-MiniTest::Reporters.use!
+MiniTest::Reporters.use! unless ENV['RM_INFO']
