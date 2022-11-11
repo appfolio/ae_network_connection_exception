@@ -44,7 +44,11 @@ module AeNetworkConnectionException
     private
 
     def other_exceptions
-      defined?(RestClient::Exceptions::OpenTimeout) ? [RestClient::Exceptions::OpenTimeout] : []
+      res = []
+      res << RestClient::Exceptions::OpenTimeout if defined?(RestClient::Exceptions::OpenTimeout)
+      res << HTTP::ConnectTimeoutError if defined?(HTTP::ConnectTimeoutError)
+
+      res
     end
 
     def raise_if_exception_message_matches(exception, pattern)

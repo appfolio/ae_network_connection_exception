@@ -55,6 +55,11 @@ module AeNetworkConnectionException
       assert_connection_not_established_thrown_for(open_timeout)
     end
 
+    def test_ae_network_connection_exception_try__raises_connection_not_establised_exception_http_connect_time_out
+      open_timeout = HTTP::ConnectTimeoutError.new
+      assert_connection_not_established_thrown_for(open_timeout)
+    end
+
     def test_exception_signatures
       assert_equal expected_signatures.size, AeNetworkConnectionException.exception_signatures.size
 
@@ -67,9 +72,18 @@ module AeNetworkConnectionException
       old = RestClient::Exceptions::OpenTimeout
       RestClient::Exceptions.send(:remove_const, :OpenTimeout)
 
-      assert_empty AeNetworkConnectionException.send(:other_exceptions)
+      refute AeNetworkConnectionException.send(:other_exceptions).include?(old)
     ensure
       RestClient::Exceptions.const_set(:OpenTimeout, old)
+    end
+
+    def test_http_connect_time_out_not_defined
+      old = HTTP::ConnectTimeoutError
+      HTTP.send(:remove_const, :ConnectTimeoutError)
+
+      refute AeNetworkConnectionException.send(:other_exceptions).include?(old)
+    ensure
+      HTTP.const_set(:ConnectTimeoutError, old)
     end
 
     private

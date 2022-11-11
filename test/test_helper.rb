@@ -22,5 +22,6 @@ require 'ae_network_connection_exception'
 require 'minitest/autorun'
 require 'minitest/reporters'
 require 'rest-client'
+require 'http'
 
 MiniTest::Reporters.use! unless ENV['RM_INFO']
