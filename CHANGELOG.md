@@ -6,6 +6,8 @@
 
 **Merged pull requests:**
 
+- add HTTP::ConnectTimeoutError to list of errors if http gem is used [\#10](https://github.com/appfolio/ae_network_connection_exception/pull/10) ([shfung](https://github.com/shfung))
+- Appraise rubies 2.6.9, 2.7.5, 3.1.0, and Rails 7 [\#9](https://github.com/appfolio/ae_network_connection_exception/pull/9) ([Maimer](https://github.com/Maimer))
 - Make public [\#8](https://github.com/appfolio/ae_network_connection_exception/pull/8) ([Maimer](https://github.com/Maimer))
 
 ## [v1.5.0](https://github.com/appfolio/ae_network_connection_exception/tree/v1.5.0) (2019-03-15)
@@ -20,14 +22,11 @@
 
 - sb - add rest client open error [\#7](https://github.com/appfolio/ae_network_connection_exception/pull/7) ([stevenboyd](https://github.com/stevenboyd))
 - js - move to cirecleci [\#6](https://github.com/appfolio/ae_network_connection_exception/pull/6) ([spjsschl](https://github.com/spjsschl))
+- plk: require net/http [\#4](https://github.com/appfolio/ae_network_connection_exception/pull/4) ([petekinnecom](https://github.com/petekinnecom))
 
 ## [rc/JsCCI_](https://github.com/appfolio/ae_network_connection_exception/tree/rc/JsCCI_) (2019-02-07)
 
 [Full Changelog](https://github.com/appfolio/ae_network_connection_exception/compare/rc/plkFixError_...rc/JsCCI_)
-
-**Merged pull requests:**
-
-- plk: require net/http [\#4](https://github.com/appfolio/ae_network_connection_exception/pull/4) ([petekinnecom](https://github.com/petekinnecom))
 
 ## [rc/plkFixError_](https://github.com/appfolio/ae_network_connection_exception/tree/rc/plkFixError_) (2018-01-16)
 
