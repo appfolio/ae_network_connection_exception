@@ -6,6 +6,9 @@
 
 **Merged pull requests:**
 
+- Appraise Ruby `3.3.0` [\#13](https://github.com/appfolio/ae_network_connection_exception/pull/13) ([Maimer](https://github.com/Maimer))
+- Fix minitest deprecation [\#12](https://github.com/appfolio/ae_network_connection_exception/pull/12) ([Maimer](https://github.com/Maimer))
+- Updates for Ruby `2.7.7`, `3.1.3`, `3.2.1` [\#11](https://github.com/appfolio/ae_network_connection_exception/pull/11) ([Maimer](https://github.com/Maimer))
 - add HTTP::ConnectTimeoutError to list of errors if http gem is used [\#10](https://github.com/appfolio/ae_network_connection_exception/pull/10) ([shfung](https://github.com/shfung))
 - Appraise rubies 2.6.9, 2.7.5, 3.1.0, and Rails 7 [\#9](https://github.com/appfolio/ae_network_connection_exception/pull/9) ([Maimer](https://github.com/Maimer))
 - Make public [\#8](https://github.com/appfolio/ae_network_connection_exception/pull/8) ([Maimer](https://github.com/Maimer))
