@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  title: ae_network_connection_exception
+  description: This catalog entity description has been auto-generated
+  tags:
+    - oss
+  annotations:
+    appfolio.com/package-location: url:https://rubygems.org/gems/ae_network_connection_exception
+    appfolio.com/package-type: gem
+  name: ae-network-connection-exception
+spec:
+  type: library
+  lifecycle: unknown
+  owner: engineering
