@@ -2,7 +2,20 @@
 
 ## [Unreleased](https://github.com/appfolio/ae_network_connection_exception/tree/HEAD)
 
-[Full Changelog](https://github.com/appfolio/ae_network_connection_exception/compare/v1.5.0...HEAD)
+[Full Changelog](https://github.com/appfolio/ae_network_connection_exception/compare/v1.9.0...HEAD)
+
+**Merged pull requests:**
+
+- \[BANK-1370\] Appraise Ruby 3.4 [\#15](https://github.com/appfolio/ae_network_connection_exception/pull/15) ([Maimer](https://github.com/Maimer))
+- Add Backstage catalog metadata file\(s\) [\#14](https://github.com/appfolio/ae_network_connection_exception/pull/14) ([modethirteen](https://github.com/modethirteen))
+
+## [v1.9.0](https://github.com/appfolio/ae_network_connection_exception/tree/v1.9.0) (2025-05-14)
+
+[Full Changelog](https://github.com/appfolio/ae_network_connection_exception/compare/v1.8.0...v1.9.0)
+
+## [v1.8.0](https://github.com/appfolio/ae_network_connection_exception/tree/v1.8.0) (2024-02-29)
+
+[Full Changelog](https://github.com/appfolio/ae_network_connection_exception/compare/v1.5.0...v1.8.0)
 
 **Merged pull requests:**
 
