@@ -5,9 +5,14 @@ on:
     branches:
       - main
       - master
+    paths:
+      - 'lib/**'
+      - 'ae_network_connection_exception.gemspec'
+      - 'LICENSE.txt'
 
 permissions:
   contents: write
+  id-token: write
   pull-requests: write
 
 jobs:
