@@ -8,7 +8,7 @@ source 'https://rubygems.org' do
   gem 'debug', '>= 1.11', '< 2'
   gem 'http', '>= 5.3', '< 6'
   gem 'minitest', '>= 6', '< 7'
-  gem 'minitest-reporters', '>= 1.7', '< 2'
+  gem 'minitest-reporters', '>= 1.8', '< 2'
   gem 'mocha', '>= 3', '< 4'
   gem 'rake', '>= 13.3', '< 14'
   gem 'rest-client', '>= 2.1', '< 3'
