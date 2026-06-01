@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.10.1](https://github.com/appfolio/ae_network_connection_exception/compare/v1.10.0...v1.10.1) (2026-05-07)
+
+
+### Miscellaneous Chores
+
+* migrate npm registry from CodeArtifact to JFrog ([4f121f4](https://github.com/appfolio/ae_network_connection_exception/commit/4f121f4f59ee5b7058ee9ac513fac1960f916ced))
+* migrate npm registry from CodeArtifact to JFrog ([5c1110d](https://github.com/appfolio/ae_network_connection_exception/commit/5c1110d86104811ade1fb7ac7a9bb6b1784177b4))
+
+
+### Continuous Integration
+
+* add Release Please and gem-releaser workflows for automated releases ([1c1a591](https://github.com/appfolio/ae_network_connection_exception/commit/1c1a591e1b728dd0c1e851d9d508140cee466476))
+* add Release Please and gem-releaser workflows for automated releases ([bf97dda](https://github.com/appfolio/ae_network_connection_exception/commit/bf97dda5dc02a78a1f1dca9f98e1305e7fa2fe28))
+
 ## [Unreleased](https://github.com/appfolio/ae_network_connection_exception/tree/HEAD)
 
 [Full Changelog](https://github.com/appfolio/ae_network_connection_exception/compare/v1.9.0...HEAD)
