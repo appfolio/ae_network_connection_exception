@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-source 'https://rubygems.org' # global source
+source 'https://appfolio.jfrog.io/artifactory/api/gems/appfolio-ae_network_connection_exception-gem/'
 
-source 'https://rubygems.org' do
+source 'https://appfolio.jfrog.io/artifactory/api/gems/appfolio-ae_network_connection_exception-gem/' do
   gem 'appraisal', '>= 2.5', '< 3'
-  gem 'bundler', '>= 2.6', '< 3'
+  gem 'bundler', '>= 2.6', '< 5'
   gem 'debug', '>= 1.11', '< 2'
   gem 'http', '>= 5.3', '< 6'
   gem 'minitest', '>= 6', '< 7'

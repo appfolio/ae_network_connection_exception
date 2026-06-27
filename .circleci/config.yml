@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   gem-tool: appfolio/gem-tool@volatile
+  public-packages: https://raw.githubusercontent.com/appfolio/public-packages/v1/orbs/public-packages.yml
 
 workflows:
   rc:
@@ -9,6 +10,8 @@ workflows:
       - gem-tool/rake_test:
           name: test_ruby-<< matrix.ruby_version >>
           executor_tag: ruby
+          after-checkout-steps:
+            - public-packages/setup
           matrix:
             parameters:
               ruby_version:
