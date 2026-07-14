@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.platform      = Gem::Platform::RUBY
   spec.author        = 'AppFolio'
   spec.email         = 'opensource@appfolio.com'
-  spec.description   = 'Catch exceptions related to establishing a network connection and return a generic error.'
-  spec.summary       = 'Provides sane exceptions for network failures.'
+  spec.description   = 'Catches exceptions related to establishing a network connection and wraps them in a single generic error, giving applications a consistent way to handle network failures.'
+  spec.summary       = 'Provides sane exceptions for network connection failures.'
   spec.homepage      = 'https://github.com/appfolio/ae_network_connection_exception'
   spec.license       = 'MIT'
   spec.files         = Dir['**/*'].select { |f| f[%r{^(lib/|LICENSE.txt|.*gemspec)}] }
