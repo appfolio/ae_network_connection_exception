@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.10.1](https://github.com/appfolio/ae_network_connection_exception/compare/v1.10.0...v1.10.1) (2026-07-20)
+
+
+### Miscellaneous Chores
+
+* migrate catalog-info.yaml metadata into gemspec for gemspec catalog ingestor ([0bbea9c](https://github.com/appfolio/ae_network_connection_exception/commit/0bbea9ccbefba97fccc0d94a05872321eb6b023a))
+* migrate npm registry from CodeArtifact to JFrog ([4f121f4](https://github.com/appfolio/ae_network_connection_exception/commit/4f121f4f59ee5b7058ee9ac513fac1960f916ced))
+* migrate npm registry from CodeArtifact to JFrog ([5c1110d](https://github.com/appfolio/ae_network_connection_exception/commit/5c1110d86104811ade1fb7ac7a9bb6b1784177b4))
+* standardize CI and test configuration ([ff04072](https://github.com/appfolio/ae_network_connection_exception/commit/ff0407259582136b26e14ccc2f8416e2b8a371d8))
+
+
+### Build System
+
+* migrate gem source from RubyGems to JFrog ([d322834](https://github.com/appfolio/ae_network_connection_exception/commit/d322834c44b404fb4c26fd9a648adcdae0ba151c))
+
+
+### Continuous Integration
+
+* add id-token permission for OIDC trusted publishing ([99eb46b](https://github.com/appfolio/ae_network_connection_exception/commit/99eb46be0ff2e014590671ef7d926fc8da00a306))
+* add id-token permission for OIDC trusted publishing ([b7dfd0b](https://github.com/appfolio/ae_network_connection_exception/commit/b7dfd0b84a9bcbf172904b872b654b55e8ff0040))
+* add Release Please and gem-releaser workflows for automated releases ([1c1a591](https://github.com/appfolio/ae_network_connection_exception/commit/1c1a591e1b728dd0c1e851d9d508140cee466476))
+* add Release Please and gem-releaser workflows for automated releases ([bf97dda](https://github.com/appfolio/ae_network_connection_exception/commit/bf97dda5dc02a78a1f1dca9f98e1305e7fa2fe28))
+* scope release-please to gem-shipped files ([1244c25](https://github.com/appfolio/ae_network_connection_exception/commit/1244c256d3605c4d8ac38dd9db9b2a083ba858e1))
+
 ## [Unreleased](https://github.com/appfolio/ae_network_connection_exception/tree/HEAD)
 
 [Full Changelog](https://github.com/appfolio/ae_network_connection_exception/compare/v1.9.0...HEAD)
