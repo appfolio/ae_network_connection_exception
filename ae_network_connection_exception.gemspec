@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.summary       = 'Provides sane exceptions for network connection failures.'
   spec.homepage      = 'https://github.com/appfolio/ae_network_connection_exception'
   spec.license       = 'MIT'
-  spec.files         = Dir['**/*'].select { |f| f[%r{^(lib/|LICENSE.txt|.*gemspec)}] }
+  spec.files         = Dir['**/*'].select { |f| f[%r{^(lib/|LICENSE.txt|ae_network_connection_exception\.*gemspec)}] }
   spec.require_paths = ['lib']
 
   spec.required_ruby_version = Gem::Requirement.new('< 4.1')
